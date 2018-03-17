@@ -1,0 +1,26 @@
+{
+  "name": "are-we-there-yet",
+  "version": "1.0.0",
+  "description": "A service to calculate percentage through the year",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thomascastleman/are-we-there-yet.git"
+  },
+  "author": "Thomas Castleman & Johnny Lindbergh",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thomascastleman/are-we-there-yet/issues"
+  },
+  "homepage": "https://github.com/thomascastleman/are-we-there-yet#readme",
+  "dependencies": {
+    "body-parser": "^1.18.2",
+    "express": "^4.16.3",
+    "moment": "^2.21.0",
+    "mustache-express": "^1.2.5"
+  }
+}
