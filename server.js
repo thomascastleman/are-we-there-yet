@@ -9,13 +9,24 @@ app.use(bodyParser.urlencoded({extended: false}));
 app.engine('html', mustacheExpress());
 app.use('/', express.static('views'));
 
+var server = require('http').createServer(app);
+var io = require('socket.io')(server);
+
+var school_start = moment('2017-08-24');
+var school_end = moment('2018-06-01');
+
 // get percentage of year complete
 function getPercentage() {
 	return (moment() - school_start) / (school_end - school_start) * 100;
 }
 
-var school_start = moment('2017-08-24');
-var school_end = moment('2018-06-01');
+// establish socket for dynamic updating
+io.on('connection', function(socket) {
+	// refresh about every 80sec
+	setInterval(function() {
+		socket.emit('update', getPercentage().toFixed(3));
+	}, 85000);
+});
 
 app.get('/', function(req, res) {
 	res.render('client.html', { 
@@ -25,6 +36,6 @@ app.get('/', function(req, res) {
 	});
 });
 
-app.listen(8080, function() {
+server.listen(8080, function() {
 	console.log("Server listening on port 8080");
 });
