@@ -18,7 +18,11 @@ var school_start = moment('2017-08-24');
 var school_end = moment('2018-06-01');
 
 app.get('/', function(req, res) {
-	res.render('client.html', { percentage: getPercentage().toFixed(3) });
+	res.render('client.html', { 
+		percentage: getPercentage().toFixed(3),
+		start_date: school_start.format('M/D/YYYY'),
+		end_date: school_end.format('M/D/YYYY')
+	});
 });
 
 app.listen(8080, function() {
