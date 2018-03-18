@@ -21,17 +21,24 @@
             are we there yet
           </div>
           <div class="w3-display-middle darken">
-            <center>    
-                <h1 id="title" class="w3-jumbo w3-animate-top" style="font-size: 95px !important">
-                    {{percentage}}%
-                </h1>
-                <hr class="w3-border-grey" style="margin:auto;width:40%">
-                <h2 class="w3-large w3-animate-top" style="font-size: 20px !important">
-                    From {{start_date}} to {{end_date}}
-                </h2>
-                <div class="progress" style="width: 90%; height: 100px">
-                    <div id="bar" class="progress-bar" role="progressbar" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentage}}%"></div>
-                </div>
+            <center>
+                {{^needs_maintenance}}
+                    <h1 id="title" class="w3-jumbo w3-animate-top" style="font-size: 95px !important">
+                        {{percentage}}%
+                    </h1>
+                    <hr class="w3-border-grey" style="margin:auto;width:40%">
+                    <h2 class="w3-large w3-animate-top" style="font-size: 20px !important">
+                        From {{start_date}} to {{end_date}}
+                    </h2>
+                    <div class="progress" style="width: 90%; height: 100px">
+                        <div id="bar" class="progress-bar" role="progressbar" aria-valuenow="{{percentage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{percentage}}%"></div>
+                    </div>
+                {{/needs_maintenance}}
+                {{#needs_maintenance}}
+                    <h1 class="w3-jumbo w3-animate-top" style="font-size: 95px !important">
+                        Requires maintenance
+                    </h1>
+                {{/needs_maintenance}}
             </center>
           </div>
 
