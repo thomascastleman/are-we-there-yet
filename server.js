@@ -15,6 +15,8 @@ var io = require('socket.io')(server);
 var school_start = moment('2017-08-24');
 var school_end = moment('2018-06-01');
 
+var interval = (school_end - school_start) * 0.00001;
+
 // get percentage of year complete
 function getPercentage() {
 	return (moment() - school_start) / (school_end - school_start) * 100;
@@ -25,7 +27,7 @@ io.on('connection', function(socket) {
 	// refresh about every 80sec
 	setInterval(function() {
 		socket.emit('update', getPercentage().toFixed(3));
-	}, 85000);
+	}, interval / 2);
 });
 
 app.get('/', function(req, res) {
