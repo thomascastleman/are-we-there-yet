@@ -44,7 +44,7 @@ function calcPercentage() {
 
 // establish socket for dynamic updating
 io.on('connection', function(socket) {
-	// refresh about every 80sec
+	// refresh every 60s
 	setInterval(function() {
 		socket.emit('update', calcPercentage().toFixed(3));
 	}, 60000);
